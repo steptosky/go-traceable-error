@@ -45,9 +45,9 @@ func TestErrt_case1(t *testing.T) {
 	err1 := New(err0, "err1")
 	err2 := New(err1, "err2")
 	err3 := New(err2, "err3")
-	msg := "\n\t\tTrace: Error_test.go:22\n\t\t\tError: err3" +
-		"\n\t\tTrace: Error_test.go:21\n\t\t\tError: err2" +
-		"\n\t\tTrace: Error_test.go:20\n\t\t\tError: err1" +
+	msg := "\n\t\tTrace: Error_test.go:47\n\t\t\tError: err3" +
+		"\n\t\tTrace: Error_test.go:46\n\t\t\tError: err2" +
+		"\n\t\tTrace: Error_test.go:45\n\t\t\tError: err1" +
 		"\n\t\t\tError: err0\n"
 	if msg != err3.Error() {
 		t.Errorf("\nExpected: %s \ngot: %s", msg, err3.Error())
@@ -61,10 +61,10 @@ func TestErrt_case2(t *testing.T) {
 	err1 := New(err0, "err1")
 	err2 := New(err1, "err2")
 	err3 := New(err2, "err3")
-	msg := "\n\t\tTrace: Error_test.go:38\n\t\t\tError: err3" +
-		"\n\t\tTrace: Error_test.go:37\n\t\t\tError: err2" +
-		"\n\t\tTrace: Error_test.go:36\n\t\t\tError: err1" +
-		"\n\t\tTrace: Error_test.go:35\n\t\t\tError: err0\n"
+	msg := "\n\t\tTrace: Error_test.go:63\n\t\t\tError: err3" +
+		"\n\t\tTrace: Error_test.go:62\n\t\t\tError: err2" +
+		"\n\t\tTrace: Error_test.go:61\n\t\t\tError: err1" +
+		"\n\t\tTrace: Error_test.go:60\n\t\t\tError: err0\n"
 	if msg != err3.Error() {
 		t.Errorf("\nExpected: %s \ngot: %s", msg, err3.Error())
 	}
@@ -96,7 +96,7 @@ func TestErrt_case4(t *testing.T) {
 	fmt.Println("case 4")
 	EnableSourceNamePrint = false
 	err0 := NewDescf("%s", "err0")
-	msg := "\n\t\tError: [err0]\n"
+	msg := "\n\t\tError: err0\n"
 	if msg != err0.Error() {
 		t.Errorf("\nExpected: %s \ngot: %s", msg, err0.Error())
 	}
@@ -107,7 +107,7 @@ func TestErrt_case5(t *testing.T) {
 	fmt.Println("case 5")
 	EnableSourceNamePrint = false
 	err0 := Newf(errors.New("err0"), "%s", "err1")
-	msg := "\n\t\tError: [err1]\n" + "\t\tError: err0\n"
+	msg := "\n\t\tError: err1\n" + "\t\tError: err0\n"
 	if msg != err0.Error() {
 		t.Errorf("\nExpected: %s \ngot: %s", msg, err0.Error())
 	}
