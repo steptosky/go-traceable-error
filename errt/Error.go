@@ -67,7 +67,7 @@ func New(err error, desc string) *Error {
 
 // Creates new error from an origin go error and a formatted description.
 func Newf(err error, format string, a ...interface{}) *Error {
-	return _newErr(err, fmt.Sprintf(format, a))
+	return _newErr(err, fmt.Sprintf(format, a...))
 }
 
 //----------------------
@@ -79,7 +79,7 @@ func NewDesc(desc string) *Error {
 
 // Creates new error from a formatted description.
 func NewDescf(format string, a ...interface{}) *Error {
-	return _newErr(nil, fmt.Sprintf(format, a))
+	return _newErr(nil, fmt.Sprintf(format, a...))
 }
 
 //----------------------
@@ -107,7 +107,7 @@ func simplifySourcePath(path *string) string {
 		if idx == -1 {
 			return *path
 		}
-		return (*path)[idx+1 : len(*path)]
+		return (*path)[idx+1: len(*path)]
 	} else {
 		return *path
 	}
